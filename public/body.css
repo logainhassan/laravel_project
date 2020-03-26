@@ -1,0 +1,23 @@
+html body{
+    background: url("/images/background.jpg");
+    -webkit-background-size: cover;
+ 	-moz-background-size: cover;
+  	background-size: cover;
+  	-o-background-size: cover;
+}
+
+.thead-dark tr th {
+	background-color: #3b638b !important; 
+}
+.container{
+	    margin-top: 50px;
+}
+.btn-success{
+	background-color: #3b638b !important;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+label{
+    font-size: 30px;
+    color:#84a5b4;
+}

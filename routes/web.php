@@ -17,8 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/posts','PostController@index');
+Route::get('/posts','PostController@index')->name('posts.index');
 
+//route to form
+Route::get('/posts/create','PostController@create')->name('posts.create');
+
+//to store data
+Route::post('/posts','PostController@store')->name('posts.store');
+
+Route::get('/posts/{post}','PostController@show')->name('posts.show');
 // Route::get('/my-blog', function () {
 // 	$myPosts=[
 //     	[
