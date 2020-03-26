@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use Carbon\Carbon;
+
 
 class PostController extends Controller
 {
     public function index(){
     	$posts= Post::all();
-        
+
         // 	$posts=[
     // 	[
     // 		'id' => 1,
@@ -36,13 +38,18 @@ class PostController extends Controller
     public function show(){
     	$request = request();
     	$postId = $request->post;
-    	    	$posts= Post::all();
     	$post = Post::find($postId);
     	// $postOne = post::where('id',$postId)->get();
     	// $postTwo = post::where('id',$postId)->first();
     	// dd($post,$postOne,$postTwo);
+        // $posts= Post::all();
+
+        $date= $post->created_at;
+        $date = Carbon::parse($date);
+        dd($date);
     	return view('posts.show',[
-    		'post' => $post
+    		'post' => $post,
+            'date' => $date->format('d.m.Y')
     	]);
     }
 
@@ -66,5 +73,33 @@ class PostController extends Controller
         ]);
         
         return redirect()->route('posts.index');
+    }
+
+    public function edit(){
+        
+        $request = request();
+        $postId = $request->post;
+        $post = Post::find($postId);
+        $users = User::all();
+
+        return view('posts.edit',[
+            'post' => $post,
+            'users' => $users
+        ]);
+
+    }
+
+    public function update(){
+
+        $request =request();
+        $post= Post::find($request->post);
+        $post->update($request->all());      
+    
+        return redirect()->route('posts.index');
+    }
+
+    public function delete(){
+        $request =request();
+
     }
 }

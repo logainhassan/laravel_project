@@ -21,3 +21,7 @@ label{
     font-size: 30px;
     color:#84a5b4;
 }
+.card-text{
+	font-weight: 400 !important;
+	font-size: 20px;
+}

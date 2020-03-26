@@ -22,8 +22,8 @@
 		  	<td>{{$post->user ? $post->user->name : ''}}</td>
 		  	<td>{{$post->created_at}}</td>
 		  	<td style="width:100px;"><a href="{{route('posts.show',['post'=> $post->id])}}" ><i class="fas fa-eye"></i></a>
-		  	<a href="{{route('posts.show',['post'=> $post->id])}}" ><i class="fas fa-edit"></i></a>
-		  	<a href="{{route('posts.show',['post'=> $post->id])}}" ><i class="fas fa-trash"></i></a>
+		  	<a href="{{route('posts.edit',['post'=> $post->id])}}" ><i class="fas fa-edit"></i></a>
+		  	<a href="{{route('posts.delete',['post'=> $post->id])}}" ><i class="fas fa-trash"></i></a>
 		  	</td>
 		  	
 
