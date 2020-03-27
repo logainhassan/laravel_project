@@ -8,7 +8,7 @@
 	  <div class="card-body">
 	  	<h5 class="card-title">Title : <span class="card-text">{{$post->title}}</span></h5>
 	    
-	    <h5 class="card-title">Description</h5> 
+	    <h5 class="card-title">Description :</h5> 
 	    <p class="card-text">{{$post->description}}</p>
 	  </div>
 	</div>
