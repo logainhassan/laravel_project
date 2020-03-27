@@ -12,7 +12,7 @@ use App\Http\Requests\UpdatePostRequest;
 class PostController extends Controller
 { 
     public function index(){
-    	$posts= Post::paginate(6);
+    	$posts= Post::paginate(4);
 
         // 	$posts=[
     // 	[
@@ -69,11 +69,16 @@ class PostController extends Controller
         //get the request data
         //store the request data in the database
         //redirect to show page
-        
-        
+
+        $imagePath = $request->file('image');
+        $imageName = rand().'.'.$imagePath->getClientOriginalName();
+        $destination=public_path("images");
+        $imagePath->move($destination,$imageName);
+
         $posts=Post::create([
             'title' => $request->title,
             'description'=> $request->description,
+            'image' => $imageName,
             'user_id' => $request -> user_id
         ]);
         

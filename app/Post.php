@@ -8,7 +8,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Post extends Model
 {
 
-    protected $fillable = ['title' , 'description','user_id'];
+    protected $fillable = ['title' , 'description','image','user_id'];
 
     public function user(){
     	//bya5od el foreign key bel convension user then _ id (user_id) zay ma7na katbnha fel post table (user_id)

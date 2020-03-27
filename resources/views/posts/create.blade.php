@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container" style="    max-width: 855px;">
-  <form method="POST" action="{{route('posts.store')}}">
+  <form method="POST" action="{{route('posts.store')}}" enctype="multipart/form-data">
   @csrf 
   <!-- bt7mena mn vernulibility esmha csrf -->
   <div class="form-group1">
@@ -20,6 +20,15 @@
     <label for="formGroupExampleInput2">Description</label>
     <textarea class="form-control" rows="5" name="description">
     </textarea>
+  </div>
+  <div class="form-group1">
+    <br>
+    @error('image')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    <label for="formGroupExampleInput2">Image</label>
+    <br>
+    <input type="file" name="image">
   </div>
   <div class="form-group1">
     <br>

@@ -39,10 +39,11 @@ class StorePostRequest extends FormRequest
     public function messages()
     {
         return [
-            'post' => 'error',
             'title.required' => 'Title of post is required',
             'title.unique' => 'Title of post must be unique',
             'description.required'  => 'Description of post is required',
+            'image.image' => 'file is not an image',
+            'image.mimes' => 'Image extension is not png or jpg ',
             'title.min' => 'the length of title must be greater than 3',
             'description.min'  => 'the length of description must be greater than 10',
             'user_id.exists' =>'user doesn\'t exist'
