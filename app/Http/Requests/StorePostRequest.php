@@ -37,6 +37,7 @@ class StorePostRequest extends FormRequest
     public function messages()
     {
         return [
+            'post' => 'error',
             'title.required' => 'Title of post is required',
             'title.unique' => 'Title of post must be unique',
             'description.required'  => 'Description of post is required',

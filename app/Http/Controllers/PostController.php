@@ -38,8 +38,12 @@ class PostController extends Controller
     }
     public function show(Request $request){
 
-    	$postId = $request->post;
+    
+        $postId = $request->post;
     	$post = Post::find($postId);
+        if(!$post){
+            return abort(404);
+        }
     	// $postOne = post::where('id',$postId)->get();
     	// $postTwo = post::where('id',$postId)->first();
     	// dd($post,$postOne,$postTwo);

@@ -7,6 +7,7 @@
 	    <tr>
 	      <th scope="col">ID</th>
 	      <th scope="col">Title</th>
+	      <th scope="col">slug</th>
 	      <th scope="col">Description</th>
 	      <th scope="col">User</th>
 	      <th scope="col">Created At</th>
@@ -18,6 +19,7 @@
 	    <tr class="table-info">
 	    	<th scope="row">{{$post->id}}</th>
 		  	<td>{{$post->title}}</td>
+		  	<td>{{$post->slug}}</td>
 		  	<td>
 		  		@if(strlen($post->description) > 60)
 		  			{{substr($post->description,0,60)."......"}}
