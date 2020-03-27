@@ -42,7 +42,7 @@ class PostController extends Controller
         $postId = $request->post;
     	$post = Post::find($postId);
         if(!$post){
-            return abort(404);
+            return redirect()->route('posts.index')->with('error', 'post is not found');
         }
     	// $postOne = post::where('id',$postId)->get();
     	// $postTwo = post::where('id',$postId)->first();
@@ -84,6 +84,9 @@ class PostController extends Controller
         
         $postId = $request->post;
         $post = Post::find($postId);
+        if(!$post){
+            return redirect()->back()->with('error', 'post is not found');
+        }
         $users = User::all();
 
         return view('posts.edit',[
@@ -94,10 +97,9 @@ class PostController extends Controller
     }
 
     public function update(UpdatePostRequest $request){
-
         $post= Post::find($request->post);
         $post->update($request->all());      
-    
+            
         return redirect()->route('posts.index');
     }
 

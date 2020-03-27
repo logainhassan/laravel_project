@@ -22,6 +22,10 @@
     </textarea>
   </div>
   <div class="form-group1">
+    <br>
+    @error('user_id')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
       <label for="formGroupExampleInput2">User</label>
       <select class="custom-select" name="user_id" id="inputGroupSelect01">
         @foreach($users as $user)

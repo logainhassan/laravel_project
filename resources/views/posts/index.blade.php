@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
 <div class="container"> 
+	@if (session('error'))
+	    <div class="alert alert-success">
+	        {{ session('error') }}
+	    </div>
+	@endif
 	<a href="{{route('posts.create')}}" class="btn btn-success">Create Post</a>
 	<table class="table  table-bordered">
 	  <thead class="thead-dark">

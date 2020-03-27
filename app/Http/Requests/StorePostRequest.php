@@ -23,9 +23,11 @@ class StorePostRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
             'title' => 'required|min:3|unique:posts',
             'description' => 'required|min:10',
+            'user_id' => 'exists:users,id'
         ];
     }
 
@@ -43,6 +45,7 @@ class StorePostRequest extends FormRequest
             'description.required'  => 'Description of post is required',
             'title.min' => 'the length of title must be greater than 3',
             'description.min'  => 'the length of description must be greater than 10',
+            'user_id.exists' =>'user doesn\'t exist'
         ];
     }
 }
