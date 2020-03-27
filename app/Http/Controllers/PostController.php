@@ -12,7 +12,7 @@ use App\Http\Requests\UpdatePostRequest;
 class PostController extends Controller
 { 
     public function index(){
-    	$posts= Post::paginate(4);
+    	$posts= Post::paginate(3);
 
         // 	$posts=[
     // 	[
@@ -90,7 +90,7 @@ class PostController extends Controller
         $postId = $request->post;
         $post = Post::find($postId);
         if(!$post){
-            return redirect()->back()->with('error', 'post is not found');
+            return redirect()->route('posts.index')->with('error', 'post is not found');
         }
         $users = User::all();
 
