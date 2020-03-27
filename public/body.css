@@ -25,3 +25,11 @@ label{
 	font-weight: 400 !important;
 	font-size: 20px;
 }
+.deleteBtn{
+	color: #2196F3;
+	border: none;
+    background: border-box;
+}
+.deleteBtn:hover{
+	color:#3f51b5;
+} 

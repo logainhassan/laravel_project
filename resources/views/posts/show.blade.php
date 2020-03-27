@@ -22,8 +22,8 @@
 	    
 	    <h5 class="card-title">Email : <span class="card-text">{{$post->user->email}}</span></h5> 
 	    
-	    <h5 class="card-title">Created At : </h5> 
-	    <p class="card-text">{{$post->date->created_at}}</p>
+	    <h5 class="card-title">Created At : <span class="card-text">{{$date}}</span></h5> 
+	    
 	  </div>
 	</div>
 	<br>

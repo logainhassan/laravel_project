@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+//delete post
+Route::Delete('/posts/{post}','PostController@destroy')->name('posts.destroy');
+
 //show posts in table
 Route::get('/posts','PostController@index')->name('posts.index');
 
@@ -34,9 +37,6 @@ Route::get('/posts/{post}/edit','PostController@edit')->name('posts.edit');
 
 //update post
 Route::patch('/posts/{post}','PostController@update')->name('posts.update');
-
-//delete post
-Route::Delete('/posts/{post}','PostController@delete')->name('posts.delete');
 
 
 

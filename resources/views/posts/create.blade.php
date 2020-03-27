@@ -4,7 +4,7 @@
 <div class="container" style="    max-width: 855px;">
   <form method="POST" action="{{route('posts.store')}}">
   @csrf 
-  <!-- bt7mena mn vurnulibility esmha csrf -->
+  <!-- bt7mena mn vernulibility esmha csrf -->
   <div class="form-group">
     <label for="formGroupExampleInput">Title</label>
     <input type="text" class="form-control" id="formGroupExampleInput"  name="title">

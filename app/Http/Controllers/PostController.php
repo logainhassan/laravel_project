@@ -46,10 +46,10 @@ class PostController extends Controller
 
         $date= $post->created_at;
         $date = Carbon::parse($date);
-        dd($date);
+        //dd($date);
     	return view('posts.show',[
     		'post' => $post,
-            'date' => $date->format('d.m.Y')
+            'date' => $date->format('D M, Y')
     	]);
     }
 
@@ -98,8 +98,10 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
 
-    public function delete(){
+    public function destroy(){
         $request =request();
-
+        $post= Post::find($request->post);
+        $post->delete();      
+        return redirect()->back();
     }
 }
