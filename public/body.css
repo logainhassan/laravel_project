@@ -27,6 +27,7 @@ body {
 	background-color: #58528b !important;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	float: right;
 }
 
 .form-group1 label{
@@ -50,4 +51,28 @@ body {
 }
 a {
     color: #58528b;
+}
+a:hover{
+	color :#517493;x
+}
+
+.page-item.active .page-link {
+    background-color: #58528b;
+    border-color: #58528b;
+}
+.page-link {
+	color: #58528b;
+}
+.pagination{
+	float: right;
+}
+
+table {
+  width: 800px;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+tbody td ,th{
+  position: relative;
 }

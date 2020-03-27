@@ -18,7 +18,13 @@
 	    <tr class="table-info">
 	    	<th scope="row">{{$post->id}}</th>
 		  	<td>{{$post->title}}</td>
-		  	<td>{{$post->description}}</td>  	
+		  	<td>
+		  		@if(strlen($post->description) > 60)
+		  			{{substr($post->description,0,60)."......"}}
+		  		@else
+		  			{{$post->description}}
+		  		@endif
+		  	</td>  	
 		  	<td>{{$post->user ? $post->user->name : ''}}</td>
 		  	<td>{{$post->created_at}}</td>
 		  	<td style="width:100px;">
@@ -39,7 +45,9 @@
 	    @endforeach
 	  </tbody>
 	</table>
+	{{ $posts->links() }}
 </div>
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
