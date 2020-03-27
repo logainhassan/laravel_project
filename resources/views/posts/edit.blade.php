@@ -2,15 +2,23 @@
 
 @section('content')
 <div class="container" style="    max-width: 855px;">
+
   <form method="POST" action="{{route('posts.update',['post'=> $post->id])}}">
       @csrf
       {{ method_field('PATCH') }} 
   <!-- bt7mena mn vurnulibility esmha csrf -->
   <div class="form-group1">
+    @error('title')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
     <label for="formGroupExampleInput">Title</label>
     <input type="text" class="form-control" id="formGroupExampleInput" value="{{$post->title}}"  name="title">
   </div>
   <div class="form-group1">
+    <br>
+    @error('description')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
     <label for="formGroupExampleInput2">Description</label>
     <textarea class="form-control" rows="5" name="description">
       {{$post->description}}

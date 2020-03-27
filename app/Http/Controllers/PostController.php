@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use Carbon\Carbon;
-
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 
 class PostController extends Controller
-{
+{ 
     public function index(){
     	$posts= Post::paginate(6);
 
@@ -35,8 +36,8 @@ class PostController extends Controller
     	'posts' => $posts
     ]);
     }
-    public function show(){
-    	$request = request();
+    public function show(Request $request){
+
     	$postId = $request->post;
     	$post = Post::find($postId);
     	// $postOne = post::where('id',$postId)->get();
@@ -60,11 +61,11 @@ class PostController extends Controller
         ]);
     }
 
-    public function store(){
+    public function store(StorePostRequest $request){
         //get the request data
         //store the request data in the database
         //redirect to show page
-        $request =request();
+        
         
         $posts=Post::create([
             'title' => $request->title,
@@ -75,9 +76,8 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
 
-    public function edit(){
+    public function edit(Request $request){
         
-        $request = request();
         $postId = $request->post;
         $post = Post::find($postId);
         $users = User::all();
@@ -89,17 +89,16 @@ class PostController extends Controller
 
     }
 
-    public function update(){
+    public function update(UpdatePostRequest $request){
 
-        $request =request();
         $post= Post::find($request->post);
         $post->update($request->all());      
     
         return redirect()->route('posts.index');
     }
 
-    public function destroy(){
-        $request =request();
+    public function destroy(Request $request){
+
         $post= Post::find($request->post);
         $post->delete();      
         return redirect()->back();
