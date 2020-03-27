@@ -26,6 +26,8 @@
   <div class="form-group1"> 
     <label for="formGroupExampleInput2">Image</label>
     <br>
+    <img src="{{ URL::to('/') }}/images/{{ $post->image }}" width="100" height="90" style="margin-bottom: 5px;">
+    <br>
     <input type="file" name="image">
       @error('image')
           <div class="alert alert-danger">{{ $message }}</div>

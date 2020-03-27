@@ -70,18 +70,24 @@ class PostController extends Controller
         //store the request data in the database
         //redirect to show page
 
-        $imagePath = $request->file('image');
-        $imageName = rand().'.'.$imagePath->getClientOriginalName();
-        $destination=public_path("images");
-        $imagePath->move($destination,$imageName);
-
-        $posts=Post::create([
-            'title' => $request->title,
-            'description'=> $request->description,
-            'image' => $imageName,
-            'user_id' => $request -> user_id
-        ]);
+        $imageName=Null;
+        if ($request->hasfile('image')){
+            $imagePath = $request->file('image');
+            $imageName = rand().'.'.$imagePath->getClientOriginalName();
+            $destination=public_path("images");
+            $imagePath->move($destination,$imageName);
         
+        }
+
+            $posts=Post::create([
+                'title' => $request->title,
+                'description'=> $request->description,
+                'image' => $imageName,
+                'user_id' => $request -> user_id
+            ]);
+        
+
+       
         return redirect()->route('posts.index');
     }
 
@@ -103,7 +109,21 @@ class PostController extends Controller
 
     public function update(UpdatePostRequest $request){
         $post= Post::find($request->post);
-        $post->update($request->all());      
+        
+        $imageName=Null;
+        if ($request->hasfile('image')){
+            $imagePath = $request->file('image');
+            $imageName = rand().'.'.$imagePath->getClientOriginalName();
+            $destination=public_path("images");
+            $imagePath->move($destination,$imageName);
+        
+        }
+        $post->update([
+            'title' => $request->title,
+            'description'=> $request->description,
+            'image' => $imageName,
+            'user_id' => $request -> user_id
+        ]);      
             
         return redirect()->route('posts.index');
     }
