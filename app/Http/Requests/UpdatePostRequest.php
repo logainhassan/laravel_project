@@ -25,9 +25,9 @@ class UpdatePostRequest extends FormRequest
     {            
 
         return [
-            'post' => 'exists:posts',
             'title' => 'required|min:3|unique:posts,title,'. $this->post,
             'description' => 'required|min:10',
+            'image' => 'image|mimes:png,jpeg,jpg',
             'user_id' => 'exists:posts'
         ];
     }
@@ -43,6 +43,8 @@ class UpdatePostRequest extends FormRequest
             'title.required' => 'Title of post is required',
             'title.unique' => 'Title of post must be unique',
             'description.required'  => 'Description of post is required',
+            'image.image' => 'file is not an image',
+            'image.mimes' => 'Image extension is not png or jpg ',
             'title.min' => 'the length of title must be greater than 3',
             'description.min'  => 'the length of description must be greater than 10',
             'user_id' =>'user doesn\'t exist'
