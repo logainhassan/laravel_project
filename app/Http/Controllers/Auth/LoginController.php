@@ -71,7 +71,6 @@ class LoginController extends Controller
     public function createUser($getUser,$provider){
 
         $user = User::where('provider_id', $getUser->id)->first();
-
         if (!$user) {
 
              $user = User::create([

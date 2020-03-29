@@ -70,6 +70,8 @@ class PostController extends Controller
         //store the request data in the database
         //redirect to show page
 
+        $validated = $request->validated();
+
         $imageName=Null;
         if ($request->hasfile('image')){
             $imagePath = $request->file('image');

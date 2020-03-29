@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRememberTokenToUserTableWithLongCharacter extends Migration
+class AddAgainRememberTokenToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class AddRememberTokenToUserTableWithLongCharacter extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('remember_token',2000);
+            $table->string('remember_token',2000)->nullable();
+
         });
     }
 
