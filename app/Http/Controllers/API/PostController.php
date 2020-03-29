@@ -14,7 +14,7 @@ class PostController extends Controller
     	// //bta5od collection check dd($post);
     	// $postResource = PostResource::collection($post);
     	// return $postResource;
-    	return PostResource::collection(Post::paginate(4));
+    	return PostResource::collection(Post::with('user')->paginate(4));
 
     }
 
