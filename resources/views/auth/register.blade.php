@@ -63,12 +63,16 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
+                               
                                  <a class="btn btn-primary" href="login/github">
                                     Login With Github 
                                 </a>
+                                <a class="btn btn-primary" href="login/google">
+                                    Login With Google
+                                </a>
+                                 <button type="submit" class="btn btn-primary" style="margin-top: 10px;    margin-left: 113px;">
+                                    {{ __('Register') }}
+                                </button>
                             </div>
                         </div>
                     </form>

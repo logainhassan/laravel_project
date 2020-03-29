@@ -115,34 +115,22 @@ class LoginController extends Controller
      */
     public function handleGoogleCallback()
     {
-        try {
-    
-            $user = Socialite::driver('google')->user();
-            dd($user);
-     
-            $finduser = User::where('provider_id', $user->id)->first();
-     
-            if($finduser){
-     
-                Auth::login($finduser);
-    
-                return redirect('/home');
-     
-            }else{
-                $newUser = User::create([
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'google_id'=> $user->id,
-                    'password' => encrypt('123456dummy')
+        
+            $getUser = Socialite::driver('google')->user();
+            $user = $this->createUser($getUser,'google');
+
+            $expiresIn = Carbon::parse($getUser->expiresIn)->timestamp;
+           
+            if ($expiresIn > Carbon::now()->timestamp && $getUser->refreshToken) {
+                $user->update([
+                    'remember_token' => $getUser->refreshToken,
+
                 ]);
-    
-                Auth::login($newUser);
-     
-                return redirect('/home');
             }
-    
-        } catch (Exception $e) {
-            dd($e->getMessage());
-        }
+            
+            auth()->login($user);
+            
+            return redirect()->to('/home');
+            
     }
 }
